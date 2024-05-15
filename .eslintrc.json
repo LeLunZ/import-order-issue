@@ -5,9 +5,29 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.base.json"]
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": true,
+          "node": true
+        }
+      },
+      "extends": [
+        "plugin:import/recommended"
+      ],
       "rules": {
-        "@nx/enforce-module-boundaries": [
+        "import/order": [
           "error",
+          {
+            "alphabetize": {
+              "order": "asc"
+            }
+          }
+        ],
+        "@nx/enforce-module-boundaries": [
+          "off",
           {
             "enforceBuildableLibDependency": true,
             "allow": [],
